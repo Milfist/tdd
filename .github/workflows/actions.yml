@@ -16,9 +16,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+  
     - name: Set up JDK 11
       uses: actions/setup-java@v1
       with:
         java-version: 11
+
     - name: Build with Maven
       run: mvn -B package --file calculator-service/pom.xml
+
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.13
+      with:
+          name: Quarkus
+          token: ${{secrets.CC_REPORTER_ID}}
+          file: ${{github.workspace}}/calculator-service/target/site/jacoco/jacoco.xml
+          flags: unittests
+
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.7.3
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
+      with:
+        coverageLocations: ${{github.workspace}}/calculator-service/target/site/jacoco/jacoco.xml:jacoco
+        debug: true
+
+
