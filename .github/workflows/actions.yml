@@ -37,7 +37,7 @@ jobs:
       uses: paambaati/codeclimate-action@v2.7.3
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
+        JACOCO_SOURCE_PATH: "${{github.workspace}}/calculator-service/src/main/java"
       with:
         coverageLocations: ${{github.workspace}}/calculator-service/target/site/jacoco/jacoco.xml:jacoco
         debug: true
