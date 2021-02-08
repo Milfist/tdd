@@ -11,7 +11,7 @@ public class SumService {
 
   @GET
   @Path("/sum")
-  @Produces(MediaType.TEXT_PLAIN)
+  @Produces(MediaType.APPLICATION_JSON)
   public String sum(@QueryParam("number1") Integer number1, @QueryParam("number2") Integer number2) {
     return "sum = " + (Integer.sum(number1, number2));
   }
