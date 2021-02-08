@@ -3,7 +3,10 @@ package com.milfist.calculator;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
+import javax.ws.rs.core.MediaType;
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
@@ -20,6 +23,7 @@ public class SumTest {
         .when().get("/v1/sum")
         .then()
         .statusCode(200)
-        .body(is("sum = 8"));
+        .contentType(is(MediaType.APPLICATION_JSON))
+        .body(containsString("sum"), containsString("8"));
   }
 }
