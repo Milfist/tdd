@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 public class MultiplicationService {
   @GET
   @Path("/multiplication")
-  @Produces(MediaType.TEXT_PLAIN)
+  @Produces(MediaType.APPLICATION_JSON)
   public String sum(@QueryParam("number1") Integer number1, @QueryParam("number2") Integer number2) {
     return "product = " + (number1 * number2);
   }
