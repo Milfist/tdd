@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class CalculatorResult {
-  private final String result;
   private final String operation;
+  private final String result;
 }
